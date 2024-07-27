@@ -3,42 +3,10 @@ import { FaGamepad } from "react-icons/fa6";
 import { FaTrophy } from "react-icons/fa";
 import { RiGuideFill } from "react-icons/ri";
 import { cn } from "@/helpers/cn";
-
-type NavbarProps = React.ComponentProps<"nav">;
-type NavbarListProps = React.ComponentProps<"ul">;
-type NavbarListItemProps = React.ComponentProps<"li">;
-
-const NavbarList = ({ children, className, ...props }: NavbarListProps) => {
-  return (
-    <ul
-      className={cn(
-        "flex-grow border-t border-indigo-400/20 hover:border-indigo-400/40",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </ul>
-  );
-};
-
-const NavbarListItem = ({
-  children,
-  className,
-  ...props
-}: NavbarListItemProps) => {
-  return (
-    <li
-      className={cn(
-        "my-2 rounded-lg bg-transparent hover:bg-indigo-400/40 cursor-pointer flex gap-2 items-center text-slate-300 hover:text-slate-100",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </li>
-  );
-};
+import { NavbarProps } from "./types";
+import { NavbarList } from "./NavbarList";
+import { NavbarListItemLink } from "./NavbarListItemLink";
+import { NavbarListItemButton } from "./NavbarListItemButton";
 
 export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
@@ -55,18 +23,20 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
         </p>
       </div>
       <NavbarList className={"flex-grow"}>
-        <NavbarListItem>
+        <NavbarListItemLink href="/">
           <FaHome className="w-4 h-4 " /> Home
-        </NavbarListItem>
-        <NavbarListItem>
+        </NavbarListItemLink>
+        <NavbarListItemLink href="/games">
           <FaGamepad className="w-4 h-4 " /> Games
-        </NavbarListItem>
-        <NavbarListItem>
+        </NavbarListItemLink>
+        <NavbarListItemLink href="/top-10">
           <FaTrophy className="w-4 h-4" /> Top 10
-        </NavbarListItem>
-        <NavbarListItem>
+        </NavbarListItemLink>
+        <NavbarListItemLink href="/walkthroughs">
           <RiGuideFill className="w-4 h-4" /> Walkthroughs
-        </NavbarListItem>
+        </NavbarListItemLink>
+
+        <NavbarListItemButton>Button Clicked</NavbarListItemButton>
       </NavbarList>
 
       <ul className=" border-t border-indigo-400/20 hover:border-indigo-400/40">
