@@ -12,7 +12,7 @@ export const Navbar = ({ className, ...props }: NavbarProps) => {
   return (
     <nav
       className={cn(
-        "flex h-screen flex-col gap-4 bg-slate-900 border-r-indigo-400/40 hover:border-r-indigo-400/80 w-72 p-2 pt-4",
+        "fixed left-0 top-0 flex h-screen flex-col gap-4 bg-slate-900 border-r-indigo-400/40 hover:border-r-indigo-400/80 w-72 p-2 pt-4",
         className
       )}
       {...props}
