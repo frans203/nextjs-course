@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components";
+import { cn } from "@/helpers/cn";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex gap-2`}>
+      <body
+        className={cn(
+          inter.className,
+          "flex gap-2 text-slate-300 bg-slate-890"
+        )}
+      >
         <Navbar />
 
         {children}
