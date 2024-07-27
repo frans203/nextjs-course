@@ -18,15 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          inter.className,
-          "flex gap-2 text-slate-300 bg-slate-890"
-        )}
-      >
+      <body className={cn("text-slate-300 bg-slate-890", inter.className)}>
         <Navbar />
-
-        {children}
+        <div className={cn("ml-72")}>{children}</div>
       </body>
     </html>
   );
