@@ -1,3 +1,6 @@
+import articles from "@/data/articles.json";
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div>
@@ -5,89 +8,58 @@ export default function Home() {
         <p>Test</p>
       </div>
 
-      <div className="container mx-auto my-6">
-        <div className="grid grid-cols-4 gap-4 ">
-          <div className="flex-center bg-indigo-500">A</div>
-          <div className="flex-center bg-indigo-400">B</div>
-          <div className="flex-center bg-indigo-300">C</div>
-          <div className="flex-center bg-indigo-200">D</div>
-        </div>
-      </div>
+      <div className="container mx-auto gap-6">
+        <div className="grid grid-cols-4 gap-4 h-[35vh]">
+          {articles.splice(-4).map((article, i) => {
+            return (
+              <div key={i} className="flex-center relative overflow-hidden">
+                <div className="w-full h-full">
+                  <Image
+                    alt={article.title}
+                    src={`/assets/images/articles/${article.image}`}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-105 rounded-r-lg"
+                    width={600}
+                    height={400}
+                  />
+                </div>
 
-      <div className="container mx-auto my-6">
+                <p className="absolute bottom-0 pt-6 pb-6 px-2 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent w-full">
+                  {article.title}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
         <div className="grid grid-cols-12 gap-4 ">
           <div className="col-span-8  flex flex-col gap-4">
-            {/* item */}
-            <div className="flex gap-4 rounded-md">
-              <div>
-                <img
-                  className="w-auto h-64"
-                  src="https://placehold.co/600x400"
-                  alt="test"
-                />
-              </div>
+            {articles.map((article, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex gap-4 rounded-md bg-slate-800 py-4"
+                >
+                  <div className="flex items-center">
+                    <div className="h-40 rounde-r-lg overflow-hidden"></div>
+                    <Image
+                      alt={article.title}
+                      src={`/assets/images/articles/${article.image}`}
+                      className="h-full w-full object-cover transition duration-500 hover:scale-105 rounded-r-lg"
+                      width={600}
+                      height={400}
+                    />
+                  </div>
 
-              <div className="flex flex-col gap-2 py-4">
-                <h2 className="text-3xl">Title</h2>
-                <p className="flex-grow">desc</p>
-                <button>Ler mais</button>
-              </div>
-            </div>
-            {/* end-item */}
-
-            {/* item */}
-            <div className="flex gap-4 rounded-md">
-              <div>
-                <img
-                  className="w-auto h-64"
-                  src="https://placehold.co/600x400"
-                  alt="test"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 py-4">
-                <h2 className="text-3xl">Title</h2>
-                <p className="flex-grow">desc</p>
-                <button>Ler mais</button>
-              </div>
-            </div>
-            {/* end-item */}
-
-            {/* item */}
-            <div className="flex gap-4 rounded-md">
-              <div>
-                <img
-                  className="w-auto h-64"
-                  src="https://placehold.co/600x400"
-                  alt="test"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 py-4">
-                <h2 className="text-3xl">Title</h2>
-                <p className="flex-grow">desc</p>
-                <button>Ler mais</button>
-              </div>
-            </div>
-            {/* end-item */}
-
-            {/* item */}
-            <div className="flex gap-4 rounded-md">
-              <div>
-                <img
-                  className="w-auto h-64"
-                  src="https://placehold.co/600x400"
-                  alt="test"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 py-4">
-                <h2 className="text-3xl">Title</h2>
-                <p className="flex-grow">desc</p>
-                <button>Ler mais</button>
-              </div>
-            </div>
-            {/* end-item */}
+                  <div className="w-full flex flex-col gap-2 pl-4">
+                    <h2 className="text-3xl mb-4">{article.title}</h2>
+                    <p className="flex-grow">{article.excerpt}</p>
+                    <button className="bg-slate-700 hover:bg-indigo-400/40 rounded-lg px-4 py-2 inline max-w-max transition duration-300">
+                      Ler mais
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="col-span-4 bg-emerald-400">B</div>
