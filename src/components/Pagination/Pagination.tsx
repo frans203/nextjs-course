@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ELLIPSIS_LEFT, ELLIPSIS_RIGHT, generatePages } from "./generatePages";
 import { usePathname, useSearchParams } from "next/navigation";
-import { getURL } from "next/dist/shared/lib/utils";
 import { cn } from "@/helpers/cn";
 
 export const Pagination = ({

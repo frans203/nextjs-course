@@ -1,5 +1,4 @@
 import { Pagination } from "@/components/Pagination/Pagination";
-import Article from "@/libs/database/Articles";
 import ArticleService from "@/services/Articles";
 import Image from "next/image";
 
