@@ -11,13 +11,45 @@ datasource db {
 }
 
 model Article {
-  id Int @id @default(autoincrement())
-  slug  String @unique @default(uuid())
-  title String
-  excerpt String
-  content String
-  image String
-  publishedAt DateTime 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique @default(uuid())
+  title       String
+  excerpt     String
+  content     String
+  image       String
+  publishedAt DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//genre 
+
+model Genre {
+  id        Int         @id @default(autoincrement())
+  slug      String      @unique @default(uuid())
+  title     String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
+  games     GameGenre[]
+} 
+
+//games 
+model Games {
+  id        Int         @id @default(autoincrement())
+  slug      String      @unique @default(uuid())
+  title     String
+  year      Int
+  image     String
+  link      String
+  plataform String      @default("Nintendo 64")
+  genres    GameGenre[]
+}
+
+//gamesGenre
+model GameGenre {
+  @@id([gameId, genreId])
+  gameId  Int
+  game    Games @relation(fields: [gameId], references: [id])
+  genreId Int
+  genre   Genre @relation(fields: [genreId], references: [id])
 }
